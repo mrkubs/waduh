@@ -11,22 +11,18 @@
                         @csrf
                         @method('put')
                         <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" id="name"
+                                value="{{ $user->name }}">
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Email address</label>
                             <input type="email" name="email" class="form-control" id="email"
                                 value="{{ $user->email }}">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="name" name="name" class="form-control" id="name"
-                                value="{{ $user->name }}">
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label">Check me out</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="/account"><button type="button" class="btn btn-secondary">Cancel</button></a>

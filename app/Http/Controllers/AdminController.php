@@ -27,12 +27,11 @@ class AdminController extends Controller
         "user"=> User::find($id),
         ]);
     }
-
     
     public function update ($id, Request $request){
         $user = User::find($id);
         $validatedData = $request -> validate([
-            "name" => 'required|max:100|min:5',
+            "name" => 'required',
             "email" => 'unique:users,email|required',
         ]);
         $user->update($validatedData);
