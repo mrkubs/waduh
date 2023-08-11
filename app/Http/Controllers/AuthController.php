@@ -17,19 +17,19 @@ class AuthController extends Controller
         return view('auth.login', ['title = Login', 'isAuthPage' => true]);
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): RedirectResponse
     {
         $cred = $request->validate([
-            'email' => 'required|email:dns',
-            'password' => 'required'
+            'email' => ['required','email:dns'],
+            'password' => ['required']
         ]);
 
         if (Auth::attempt($cred)) {
             $request->session()->regenerate();
             return redirect()->intended('');
+            
         }
-
-        return back()->with('loginError', 'Login Failed!');
+            return back()->with('logError', 'Login Failed');
     }
 
     public function logout()
@@ -61,6 +61,6 @@ class AuthController extends Controller
                     ->uncompromised()
         ]);
         User::create($validatedData);
-        return redirect('/login')->with('success', 'Add Account Successful');
+        return redirect('/login')->with('success', 'Register Successful');
     }
 }

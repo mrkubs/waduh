@@ -3,7 +3,7 @@
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 
-<body class="">
+<body class="bg-secondary">
 
     <div class="section">
         <div class="container">
@@ -14,20 +14,29 @@
                         <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
                         <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
                         <label for="reg-log"></label>
+                        <div class="row justify-content-center">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success col-4 my-2" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="close"></button>
+                                </div>
+                            @endif
+                            @if (session()->has('logError'))
+                                <div class="alert alert-danger col-4 my-2" role="alert">
+                                    {{ session('logError') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="close"></button>
+                                </div>
+                            @endif
+                        </div>
                         <div class="card-3d-wrap mx-auto">
                             <div class="card-3d-wrapper">
                                 <div class="card-front">
-                                    @if (session()->has('loginError'))
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            {{ session('loginError') }}
-                                            <button type="button" class="btn-close" data-bs-dismis="alert"
-                                                aria-label="close"></button>
-                                        </div>
-                                    @endif
                                     <div class="center-wrap">
                                         <form action="/login" method="post" class="section text-center">
                                             @csrf
-                                            <h4 class="mb-4 pb-3">Log In</h4>
+                                            <h4 class="text-secondary mb-4 pb-3">Log In</h4>
                                             <div class="form-group">
                                                 <input type="email" name="email"
                                                     class="form-style @error('email') is-invalid @enderror"
@@ -51,7 +60,7 @@
                                                     {{ $message }}
                                                 </div>
                                             @enderror
-                                            <button class="btn mt-4" type="submit">Submit</button>
+                                            <button class="btn btn-secondary mt-4" type="submit">Submit</button>
                                             <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot
                                                     your
                                                     password?</a></p>
@@ -64,7 +73,7 @@
                                             <form class="px-3 py-4" method="post" action="/register">
                                                 @csrf
                                                 @method('post')
-                                                <h4 class="mb-4 pb-3">Sign Up</h4>
+                                                <h4 class="text-secondary mb-4 pb-3">Sign Up</h4>
                                                 <div class="form-group">
                                                     <input type="text" name="name"
                                                         class="form-style @error('name') is-invalid @enderror"
@@ -97,7 +106,7 @@
                                                         placeholder="Your Password" id="logpass" autocomplete="off">
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
-                                                <button class="btn mt-4" type="submit">submit</button>
+                                                <button class="btn btn-secondary mt-4" type="submit">submit</button>
                                             </form>
                                         </div>
                                     </div>
