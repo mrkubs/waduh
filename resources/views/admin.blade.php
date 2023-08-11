@@ -34,7 +34,7 @@
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    <!--<script>
         $(".sidebar ul li").on('click', function() {
             $(".sidebar ul li.active").removeClass('active');
             $(this).addClass('active');
@@ -47,7 +47,7 @@
         $('.close-btn').on('click', function() {
             $('.sidebar').removeClass('active');
         });
-    </script>
+    </script>-->
 </body>
 
 </html>

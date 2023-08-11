@@ -12,7 +12,8 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                    <a class="nav-link active" aria-current="page" href="#"><i
+                            class="fa-solid fa-user border-radius-lg px-2"></i>{{ auth()->user()->name }}</a>
                 </li>
 
             </ul>

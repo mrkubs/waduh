@@ -23,23 +23,27 @@ use App\Http\Controllers\CategoryController;
 
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/','dashboard');
-    Route::get('/account','account');
-    Route::get('/account/{id}/edit','edit');
-    Route::put('/account/{id}','update');
-    Route::get('/account/add', 'create');
-    Route::post('/account', 'store');
-    Route::get('/account/{id}', 'show');
-    Route::get('/account/delete/{id}', 'delete');
+    Route::get('/','dashboard')->middleware('auth');
+    Route::get('/account','account')->middleware('auth');
+    Route::get('/account/{id}/edit','edit')->middleware('auth');
+    Route::put('/account/{id}','update')->middleware('auth');
+    Route::get('/account/add', 'create')->middleware('auth');
+    Route::post('/account', 'store')->middleware('auth');
+    Route::get('/account/{id}', 'show')->middleware('auth');
+    Route::get('/account/delete/{id}', 'delete')->middleware('auth');
 });
 
 Route::controller(PostController::class)->group(function () {
-    Route::get('/posts','posts');
+    Route::get('/posts','posts')->middleware('auth');
 });
 
 Route::resource('/category',CategoryController::class);
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/login','index');
-    Route::post('/login','authenticate');
+    Route::get('/login','index') ->name('login')->middleware('guest');
+    Route::post('/login','authenticate') ->middleware('guest');
+    Route::post('/logout','logout');
+    Route::get('/register','create')->middleware('guest');
+    Route::post('/register','store')->middleware('guest');
+
 });

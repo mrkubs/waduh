@@ -20,10 +20,17 @@
             <li class="{{ $title === 'Account' ? 'active' : '' }} py-2">
                 <a href="/account" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>Account</a>
             </li>
+
+
             <li class=" py-2">
-                <a href="#" class="text-decoration-none"><i
-                        class="fa-solid fa-right-from-bracket px-2"></i>Logout</a>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button class="btn btn-outline-danger" type="submit"><i
+                            class="fa-solid fa-right-from-bracket px-2"></i>Logout
+                    </button></a>
+                </form>
             </li>
+
         </ul>
         <hr class="h-color">
     </div>
