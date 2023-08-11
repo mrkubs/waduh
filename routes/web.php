@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
@@ -37,3 +38,8 @@ Route::controller(PostController::class)->group(function () {
 });
 
 Route::resource('/category',CategoryController::class);
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login','index');
+    Route::post('/login','authenticate');
+});
