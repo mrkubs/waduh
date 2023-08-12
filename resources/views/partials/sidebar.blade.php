@@ -17,9 +17,12 @@
             <li class="{{ $title === 'Posts' ? 'active' : '' }} py-2">
                 <a href="/posts" class="text-decoration-none"><i class="fa-regular fa-newspaper px-2"></i>Posts</a>
             </li>
-            <li class="{{ $title === 'Account' ? 'active' : '' }} py-2">
-                <a href="/account" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>Account</a>
-            </li>
+            @if (auth()->user()->role == 'admin')
+                <li class="{{ $title === 'Account' ? 'active' : '' }} py-2">
+                    <a href="/account" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>Account</a>
+                </li>
+            @endif
+
 
 
             <li class=" py-2">

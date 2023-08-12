@@ -24,13 +24,13 @@ use App\Http\Controllers\CategoryController;
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/','dashboard')->middleware('auth');
-    Route::get('/account','account')->middleware('auth');
-    Route::get('/account/{id}/edit','edit')->middleware('auth');
-    Route::put('/account/{id}','update')->middleware('auth');
-    Route::get('/account/add', 'create')->middleware('auth');
-    Route::post('/account', 'store')->middleware('auth');
-    Route::get('/account/{id}', 'show')->middleware('auth');
-    Route::get('/account/delete/{id}', 'delete')->middleware('auth');
+    Route::get('/account','account')->middleware('admin');
+    Route::get('/account/{id}/edit','edit')->middleware('admin');
+    Route::put('/account/{id}','update')->middleware('admin');
+    Route::get('/account/add', 'create')->middleware('admin');
+    Route::post('/account', 'store')->middleware('admin');
+    Route::get('/account/{id}', 'show')->middleware('admin');
+    Route::get('/account/delete/{id}', 'delete')->middleware('admin');
 });
 
 Route::controller(PostController::class)->group(function () {
